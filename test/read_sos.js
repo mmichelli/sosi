@@ -32,7 +32,7 @@ describe('SOSI stream a directory', function(){
     it('Should loop through all the files',  function(done) {
 
            setTimeout(function() {
-               assert(groups.length == 549);
+               assert.equal(groups.length, 549);
                assert.equal(groups[0].type , "hode");
                assert.equal(groups[1].type , "punkt");
                assert.equal(groups[2].type , "punkt");

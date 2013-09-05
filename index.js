@@ -63,6 +63,8 @@ function streamFile (path, cb) {
         bufferlines = null;
         if(cb) {
             cb(null);
+        }else{
+            stream.queue(null)
         }
     });
     return stream
