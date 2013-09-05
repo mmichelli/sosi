@@ -22,7 +22,7 @@ function stream(path) {
             walker.on('file', function(root, stat, next) {
                 // Add this file to the list of files
                 if((stat.name.indexOf("\.sos") != -1)) {
-                    streamFile(join(root, stat.name),next ).pipe(s);
+                    streamFile(join(root, stat.name),next ).pipe(s,{ end: false });
                 }else{
                     next();
                 }
@@ -61,11 +61,10 @@ function streamFile (path, cb) {
     rl.on('close', function() {
         stream.queue(sosiLinesToJSON(bufferlines));
         bufferlines = null;
+         stream.queue(null)
         if(cb) {
             cb(null);
-        }else{
-            stream.queue(null)
-        }
+        } 
     });
     return stream
 }
