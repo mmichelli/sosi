@@ -1,4 +1,4 @@
-# SOSi 
+# SOSi (Node.js)
 
 Streaming .sos files.
 Very basic functionality 
