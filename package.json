@@ -1,0 +1,31 @@
+{
+  "name": "sosi",
+  "version": "0.0.1",
+  "description": "Stream .sos files. SOSI is a much used geospatial vector data format for predominantly used for exchange of geographical information in Norway",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "through": "~2.3.4",
+    "walk": "~2.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mmichelli/sosi.git"
+  },
+  "keywords": [
+    "sosi",
+    ".sos",
+    "gis",
+    "stream",
+    "norway",
+    "geographical"
+  ],
+  "author": "Mario Michelli",
+  "license": "BSD"
+}
