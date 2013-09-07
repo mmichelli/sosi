@@ -79,29 +79,31 @@ function sosiLinesToJSON(lines){
     for(var i = 0; i < lines.length; i++)
     {
         var line = trim(lines[i]);
-        var twoParts = line.split(" ", 2);
-        var dots = countDots(twoParts[0]);
-        var name = twoParts[0].replace(/\./g, "").toLowerCase();
+        var splitLine = slitInTwo(line);
+        var dots = countDots(splitLine[0]);
+        var name = splitLine[0].replace(/\./g, "").toLowerCase();
         var pointer = dotStack[dots - 1] || out ;
         var nextDot = countDots(lines[i+1] );
 
         dotStack[dots]  = { };
 
-        if(nextDot <= dots && twoParts.length === 2){
-            dotStack[dots] = twoParts[1];
-        } else if(twoParts.length === 2) {
-            dotStack[dots].value = twoParts[1];
+        if(nextDot <= dots && splitLine.length > 1){
+            dotStack[dots] = splitLine[1];
+        } else if(splitLine.length > 1) {
+            dotStack[dots].value = splitLine[1];
         }
 
 
         if(dots === 0){
             pointer.coordinates = line.split(" ");
             dotStack[dots] = pointer;
-            dotStack[dots].value = twoParts[1];
+
         }
         else if(dots === 1){
             pointer.type = name;
             dotStack[dots] = pointer;
+            if(splitLine.length > 1)
+              dotStack[dots].id = splitLine[1];
         }
         else{
             pointer[name] = dotStack[dots] ;
@@ -113,7 +115,12 @@ function sosiLinesToJSON(lines){
 
 function slitInTwo(str){
     var splited = str.match(/^([^ ]*?) (.*)$/);
-    return  (splited)?splited.shift():[str];    
+    if(splited){
+        splited.shift();
+    } else{
+      splited = [str]
+    }
+    return splited;
 }
 
 function  filterLines(lines){

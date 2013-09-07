@@ -75,11 +75,6 @@ describe('SOSI stream a file', function(){
        })
 });
 
-
-
-
-
-
 describe('SOSIStream convert head into js object', function(){
     var lines = [
         '.HODE ',
@@ -98,8 +93,8 @@ describe('SOSIStream convert head into js object', function(){
       , expected =
         { type: 'hode',
           tegnsett: 'ISO8859-1',
-          transpar: { koordsys: '22', 'origo-nø': '0', enhet: '0.01' },
-          'område': { 'min-nø': '6466843', 'max-nø': '6482487' },
+          transpar: { koordsys: '22', 'origo-nø': '0 0', enhet: '0.01' },
+          'område': { 'min-nø': '6466843 462422', 'max-nø': '6482487 474723' },
           'sosi-versjon': '4.0',
           'sosi-nivå': '2',
           dato: '20130827' };
@@ -124,16 +119,16 @@ describe('SOSIStream convert head into js object', function(){
         '646777109 47408663 0']
 
       , expected = { type: 'punkt',
+                     id: '1240421:',
                      objtype: 'StolpeStor',
-                     kvalitet: '96',
+                     kvalitet: '96 20 0',
                      driftsmerking: '"LB.NAU.MO.S-AG.HOLBE"',
-                     'g-nord': '"6467771.091100',
-                     'g-øst': '"474086.635900',
+                     'g-nord': '"6467771.091100 m"',
+                     'g-øst': '"474086.635900 m"',
                      mastenummer: '"29"',
                      plassering: '"GRI-LANDVIK"',
                      'nøh': {},
-                     coordinates: [ '646777109', '47408663', '0' ],
-                     value: '47408663' };
+                     coordinates: [ '646777109', '47408663', '0' ] };
 
 
     it('should return an object', function(){
