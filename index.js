@@ -64,7 +64,7 @@ function streamFile (path, cb) {
          stream.queue(null)
         if(cb) {
             cb(null);
-        } 
+        }
     });
     return stream
 }
@@ -92,9 +92,12 @@ function sosiLinesToJSON(lines){
         } else if(twoParts.length === 2) {
             dotStack[dots].value = twoParts[1];
         }
+
+
         if(dots === 0){
             pointer.coordinates = line.split(" ");
             dotStack[dots] = pointer;
+            dotStack[dots].value = twoParts[1];
         }
         else if(dots === 1){
             pointer.type = name;
@@ -108,7 +111,10 @@ function sosiLinesToJSON(lines){
     return out;
 }
 
-
+function slitInTwo(str){
+    var splited = str.match(/^([^ ]*?) (.*)$/);
+    return  (splited)?splited.shift():[str];    
+}
 
 function  filterLines(lines){
     return lines.filter(function(n){return n});

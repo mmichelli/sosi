@@ -1,6 +1,6 @@
 {
   "name": "sosi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Stream .sos files. SOSI is a much used geospatial vector data format for predominantly used for exchange of geographical information in Norway",
   "main": "index.js",
   "directories": {

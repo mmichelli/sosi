@@ -132,7 +132,8 @@ describe('SOSIStream convert head into js object', function(){
                      mastenummer: '"29"',
                      plassering: '"GRI-LANDVIK"',
                      'nøh': {},
-                     coordinates: [ '646777109', '47408663', '0' ] };
+                     coordinates: [ '646777109', '47408663', '0' ],
+                     value: '47408663' };
 
 
     it('should return an object', function(){
